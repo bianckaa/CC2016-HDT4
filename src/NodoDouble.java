@@ -10,7 +10,6 @@
  * 
  *  @param <T> el tipo de elementos que contendra el nodo.
  */
- 
 
 public class NodoDouble<T> {
     NodoDouble<T> next = null; // refiere al nodo siguiente de la lista

@@ -16,4 +16,5 @@ public interface IList<T> {
     int lastIndexOf(T item);
     ListIterator<T> listIterator();
     int size();
+    boolean isEmpty();
 }
