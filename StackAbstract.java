@@ -9,6 +9,8 @@
  * 
  * Clase Abstract Stack:
  * funciones en comun con las implementaciones de stack
+ * 
+ * @param <T> el tipo de elementos que contendra la pila.
  */
  
 

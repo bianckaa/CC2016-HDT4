@@ -9,6 +9,8 @@
  * 
  * Clase StackVector
  * Implementacion de vector en stack
+ * 
+ * @param <T> el tipo de elementos que contendra la pila.
  */
  
 
@@ -17,7 +19,7 @@
  public class StackVector<T> extends StackAbstract<T>{
      private Vector<T> elements;
  
-     public StackVector() {
+     public StackVector() {//Contructir inicial
          elements = new Vector<>();
      }
  

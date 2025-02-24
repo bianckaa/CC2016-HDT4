@@ -9,6 +9,8 @@
  * 
  * Clase StackArrayList
  * Implementacion de ArrayList en stack
+ * 
+ * @param <T> el tipo de elementos que contendra la pila.
  */
  
 
@@ -17,7 +19,9 @@ import java.util.ArrayList;
 public class StackArrayList<T> extends StackAbstract<T>{
     private ArrayList<T> elements;
 
-    public StackArrayList() {
+
+
+    public StackArrayList() { //Contructor inicial
         elements = new ArrayList<>();
     }
 
