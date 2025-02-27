@@ -55,24 +55,32 @@ public class UI {
                 System.exit(0);
         }
 
-        // Menú para seleccionar implementación de la lista
+        // Menú para seleccionar implementación de listas
         System.out.println("Seleccione la implementación de la lista:");
-        System.out.println("1. Lista Simple");
-        System.out.println("2. Lista Doble");
-        
+        System.out.println("1. StackArrayList");
+        System.out.println("2. StackVector");
+        System.out.println("3. StackListLinkedSimple");
+        System.out.println("4. StackListLinkedDouble");
+
         int optionLista = scanner.nextInt();
-        // Dependiendo de la opción, instanciamos el tipo de lista (en este caso, solo es demostración)
+        IStack<Double> lista = null;
+
+        // Selección de la implementación de lista
         switch (optionLista) {
             case 1:
-                // Aquí pondrías tu implementación de lista simple si es necesario
-                System.out.println("Lista Simple seleccionada.");
+                lista = new StackArrayList<>();
                 break;
             case 2:
-                // Aquí pondrías tu implementación de lista doble si es necesario
-                System.out.println("Lista Doble seleccionada.");
+                lista = new StackVector<>();
+                break;
+            case 3:
+                lista = new StackListLinkedSimple<>();
+                break;
+            case 4:
+                lista = new StackListLinkedDouble<>();
                 break;
             default:
-                System.out.println("Opción no válida para listas.");
+                System.out.println("Opción no válida. Saliendo...");
                 scanner.close();
                 System.exit(0);
         }
@@ -96,8 +104,8 @@ public class UI {
         for (String infixExpression : expressions) {
             System.out.println("Expresión infix: " + infixExpression);
 
-            // Eliminar los espacios de la expresión
-            infixExpression = infixExpression.replaceAll("\\s+", "");
+            // Eliminar los espacios de la expresión (pero no en los números)
+            infixExpression = infixExpression.replaceAll("(?<=\\d)\\s+(?=\\d)", "");
 
             try {
                 // Convertir de infix a postfix
