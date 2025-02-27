@@ -16,11 +16,21 @@
 public abstract class ListAbstract<T> implements IList<T> {
     protected int size;
     
+    /** 
+     * Verifica si la lista está vacía.
+     * 
+     * @return true si la lista está vacia, false si contiene elementos.
+     */
     @Override
     public boolean isEmpty(){
         return size() == 0;
     }
 
+    /** 
+     * Obtiene el tamaño actual de la lista.
+     * 
+     * @return numero de elementos en la lista.
+     */
     @Override
     public int size() {
         return size;

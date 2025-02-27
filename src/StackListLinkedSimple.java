@@ -16,10 +16,18 @@
 public class StackListLinkedSimple<T> extends StackListAbstract<T> {
     private NodeSimple<T> stackTop;
 
+    /** 
+     * Constructor que inicializa una pila vacía utilizando nodos simples.
+     */
     public StackListLinkedSimple() {
         this.stackTop = null;
     }
 
+    /** 
+     * Agrega un elemento en la parte superior de la pila.
+     * 
+     * @param element elemento a agregar en la pila.
+     */
     @Override
     public void push(T element) {
         NodeSimple<T> newNode = new NodeSimple<>(element);
@@ -28,6 +36,11 @@ public class StackListLinkedSimple<T> extends StackListAbstract<T> {
         size++;
     }
 
+    /** 
+     * Elimina el elemento superior de la pila.
+     * 
+     * @return elemento eliminado de la pila.
+     */
     @Override
     public T pop() {
         if (isEmpty()) {
@@ -39,6 +52,11 @@ public class StackListLinkedSimple<T> extends StackListAbstract<T> {
         return data;
     }
 
+    /** 
+     * Obtiene el elemento superior de la pila sin eliminarlo.
+     * 
+     * @return elemento superior de la pila.
+     */
     @Override
     public T peek() {
         if (isEmpty()) {

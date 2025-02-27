@@ -16,10 +16,18 @@
 public class StackListLinkedDouble<T> extends StackListAbstract<T> {
     private NodeDouble<T> stackTop;
 
+    /** 
+     * Constructor que inicializa una pila vacía usando nodos dobles.
+     */
     public StackListLinkedDouble() {
         this.stackTop = null;
     }
 
+    /** 
+     * Agrega un elemento en la parte superior de la pila.
+     * 
+     * @param element elemento a agregar en la pila.
+     */
     @Override
     public void push(T element) {
         NodeDouble<T> newNode = new NodeDouble<>(element);
@@ -31,6 +39,11 @@ public class StackListLinkedDouble<T> extends StackListAbstract<T> {
         size++;
     }
 
+    /** 
+     * Elimina el elemento superior de la pila.
+     * 
+     * @return elemento eliminado de la pila.
+     */
     @Override
     public T pop() {
         if (isEmpty()) {
@@ -45,6 +58,11 @@ public class StackListLinkedDouble<T> extends StackListAbstract<T> {
         return data;
     }
 
+    /** 
+     * Obtiene el elemento superior de la pila sin eliminarlo.
+     * 
+     * @return elemento superior de la pila.
+     */
     @Override
     public T peek() {
         if (isEmpty()) {

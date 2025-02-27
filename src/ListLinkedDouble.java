@@ -18,12 +18,21 @@ public class ListLinkedDouble<T> extends ListAbstract<T> {
     private NodeDouble<T> lastNode;
     private int size;
 
+    /** 
+     * Constructor que inicializa una lista doblemente enlazada vacía.
+     */
     public ListLinkedDouble() {
         this.firstNode = null;
         this.lastNode = null;
         this.size = 0;
     }
 
+    /** 
+     * Agrega un elemento en la posición especificada de la lista.
+     * 
+     * @param index posición donde se agregará el elemento.
+     * @param item elemento a agregar en la lista.
+     */
     @Override
     public void add(int index, T item) {
         if (index < 0 || index > size) {
@@ -57,6 +66,13 @@ public class ListLinkedDouble<T> extends ListAbstract<T> {
         size++;
     }
 
+
+    /** 
+     * Elimina el elemento en la posición especificada de la lista.
+     * 
+     * @param index posición del elemento a eliminar.
+     * @return dato del nodo que fue eliminado.
+     */
     @Override
     public T remove(int index) {
         if (index < 0 || index >= size) {

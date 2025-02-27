@@ -17,6 +17,11 @@ public class NodeSimple<T> {
     T data;
     NodeSimple<T> nextNode;
 
+    /** 
+     * Constructor de un nodo simple.
+     * 
+     * @param data dato que se almacenará en el nodo.
+     */
     public NodeSimple(T data) {
         this.data = data;
         this.nextNode = null;
