@@ -33,7 +33,7 @@
          System.out.println("4. StackListLinkedDouble");
  
          int option = scanner.nextInt();
-         IStack<Character> stack = null;
+         IStack<Double> stack = null;
  
          // Selección de la implementación de pila
          switch (option) {
