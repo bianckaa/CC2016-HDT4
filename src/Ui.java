@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class UI {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ReaderDocument readerDocument = new ReaderDocument();
