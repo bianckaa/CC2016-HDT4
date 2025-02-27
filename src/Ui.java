@@ -1,44 +1,41 @@
-import java.util.Scanner;
-
 /**
  * Universidad del Valle de Guatemala
- * Algoritmos y Estructuras de Datos - Sección 31
+ * Algoritmos y Estructuras de Datos
  * Hoja de Trabajo 4
- * Integrantes:
- * - Diana Sosa (241040)
- * - Biancka Raxón (24960)
- * - Ivana Figueroa (24785)
  * 
- * Clase principal de la interfaz de usuario para interactuar con el programa.
- * Permite ingresar una expresión infix, convertirla a postfix y mostrar el resultado.
+ * Clase UI
+ * Controla la ejecución principal del programa. Lee expresiones desde un archivo,
+ * las convierte de notación infix a postfix y evalúa el resultado.
  * 
- * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
  * @version 1.0
  */
-public class UI {
 
-    /**
-     * Método principal que ejecuta la interfaz de usuario.
-     * Solicita una expresión infix, la convierte a postfix y muestra el resultado de la evaluación.
-     * 
-     * @param args los argumentos de línea de comandos (no utilizados).
-     */
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ReaderDocument readerDocument = new ReaderDocument();
-        Calculator calculator = new Calculator();
-        
-        System.out.println("Ingrese una expresión infix: ");
-        String infixExpression = scanner.nextLine();
+ import java.util.List;
 
-        // Convertir infix a postfix
-        String postfixExpression = readerDocument.infixToPostfix(infixExpression);
-        System.out.println("Expresión Postfix: " + postfixExpression);
-        
-        // Evaluar la expresión postfix
-        int result = calculator.evaluatePostfix(postfixExpression);
-        System.out.println("Resultado: " + result);
-        
-        scanner.close();
-    }
-}
+ public class UI {
+ 
+     public static void main(String[] args) {
+         // Instancias de las clases principales
+         ReaderDocument reader = new ReaderDocument();
+         Translator translator = new Translator();
+         Calculator calculator = new Calculator();
+ 
+         // Leer el archivo "datos.txt"
+         List<String> expressions = reader.readFile("datos.txt");
+ 
+         // Procesar cada expresión
+         for (String infixExpression : expressions) {
+             System.out.println("Expresión infix: " + infixExpression);
+ 
+             // Convertir de infix a postfix
+             String postfixExpression = translator.infixToPostfix(infixExpression);
+             System.out.println("Expresión postfix: " + postfixExpression);
+ 
+             // Evaluar la expresión postfix
+             double result = calculator.evaluate(postfixExpression);
+             System.out.println("Resultado: " + result);
+             System.out.println("-------------------------------");
+         }
+     }
+ }
+ 
