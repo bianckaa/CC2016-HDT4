@@ -1,9 +1,9 @@
-public class ListLinkedDoble<T> extends ListAbstract<T> {
+public class ListLinkedDouble<T> extends ListAbstract<T> {
     private NodeDouble<T> firstNode;
     private NodeDouble<T> lastNode;
     private int size;
 
-    public ListLinkedDoble() {
+    public ListLinkedDouble() {
         this.firstNode = null;
         this.lastNode = null;
         this.size = 0;
@@ -12,7 +12,7 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
     @Override
     public void add(int index, T item) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Índice fuera de rango");
+            throw new IndexOutOfBoundsException("Indice no encontrado.");
         }
 
         NodeDouble<T> newNode = new NodeDouble<>(item);
@@ -45,12 +45,12 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
     @Override
     public T remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Índice fuera de rango");
+            throw new IndexOutOfBoundsException("Indice no encontrado.");
         }
 
-        T removedData;
+        T removedDataNode;
         if (index == 0) { 
-            removedData = firstNode.data;
+            removedDataNode = firstNode.data;
             firstNode = firstNode.nextNode;
             if (firstNode != null) {
                 firstNode.previousNode = null;
@@ -58,7 +58,7 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
                 lastNode = null;
             }
         } else if (index == size - 1) {  
-            removedData = lastNode.data;
+            removedDataNode = lastNode.data;
             lastNode = lastNode.previousNode;
             if (lastNode != null) {
                 lastNode.nextNode = null;
@@ -70,16 +70,11 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
             for (int i = 0; i < index; i++) {
                 currentNode = currentNode.nextNode;
             }
-            removedData = currentNode.data;
+            removedDataNode = currentNode.data;
             currentNode.previousNode.nextNode = currentNode.nextNode;
             currentNode.nextNode.previousNode = currentNode.previousNode;
         }
         size--;
-        return removedData;
-    }
-
-    @Override
-    public int size() {
-        return size;
+        return removedDataNode;
     }
 }

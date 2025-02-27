@@ -8,12 +8,12 @@ public class ListLinkedSimple<T> extends ListAbstract<T> {
     }
 
     @Override
-    public void add(int index, T item) {
+    public void add(int index, T element) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Índice fuera de rango");
+            throw new IndexOutOfBoundsException("Indice no encontrado.");
         }
 
-        NodeSimple<T> newNode = new NodeSimple<>(item);
+        NodeSimple<T> newNode = new NodeSimple<>(element);
 
         if (index == 0) { 
             newNode.nextNode = firstNode;
@@ -32,28 +32,23 @@ public class ListLinkedSimple<T> extends ListAbstract<T> {
     @Override
     public T remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Índice fuera de rango");
+            throw new IndexOutOfBoundsException("Indice no encontrado.");
         }
 
-        T removedData;
+        T removedDataNode;
         if (index == 0) { 
-            removedData = firstNode.data;
+            removedDataNode = firstNode.data;
             firstNode = firstNode.nextNode;
         } else { 
             NodeSimple<T> currentNode = firstNode;
             for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.nextNode;
             }
-            removedData = currentNode.nextNode.data;
+            removedDataNode = currentNode.nextNode.data;
             currentNode.nextNode = currentNode.nextNode.nextNode;
         }
         size--;
-        return removedData;
-    }
-
-    @Override
-    public int size() {
-        return size;
+        return removedDataNode;
     }
 }
 

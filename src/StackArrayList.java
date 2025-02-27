@@ -12,7 +12,6 @@
  * 
  * @param <T> el tipo de elementos que contendra la pila.
  */
- 
 
 import java.util.ArrayList;
 
@@ -60,11 +59,4 @@ public class StackArrayList<T> extends StackAbstract<T>{
     public int size() {
         return elements.size();
     }
-
-
 }
-
-  
-
-
-    
