@@ -1,3 +1,18 @@
+/** 
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Sección 31
+ * Hoja de Trabajo 4
+ * Integrantes:
+ * - Diana Sosa (241040)
+ * - Biancka Raxón (24960)
+ * - Ivana Figueroa (24785)
+ * 
+ * Clase ListLinkedSimple:
+ * Hereda de ListAbstract, implementando una lista enlazada simple. 
+ * 
+ * @param <T> tipo de elemento que contendrá la lista.
+ */
+
 public class ListLinkedSimple<T> extends ListAbstract<T> {
     private NodeSimple<T> firstNode;
     private int size;

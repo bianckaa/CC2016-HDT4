@@ -1,3 +1,18 @@
+/** 
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Sección 31
+ * Hoja de Trabajo 4
+ * Integrantes:
+ * - Diana Sosa (241040)
+ * - Biancka Raxón (24960)
+ * - Ivana Figueroa (24785)
+ * 
+ * Clase StackListLinkedDouble:
+ * Hereda de StackListAbstract, implementando una lista doblemente enlazada. 
+ * 
+ * @param <T> tipo de elemento que contendrá la pila.
+ */
+
 public class StackListLinkedDouble<T> extends StackListAbstract<T> {
     private NodeDouble<T> stackTop;
 

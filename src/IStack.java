@@ -12,7 +12,6 @@
  * 
  * @param <T> el tipo de elementos que contendrá la pila.
  */
- 
 public interface IStack<T>{
 
 
