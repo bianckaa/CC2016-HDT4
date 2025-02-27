@@ -3,8 +3,7 @@
  * Algoritmos y Estructuras de Datos - Sección 31
  * Hoja de Trabajo 4
  *
- * Clase que se encarga de convertir expresiones en notación infix a postfix,
- * utilizando el algoritmo de Shunting-yard de Dijkstra.
+ * Clase que se encarga de convertir expresiones en notación infix a postfix
  *
  * Integrantes:
  * - Diana Sosa (241040)
