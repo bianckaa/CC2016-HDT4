@@ -3,33 +3,27 @@
  * Algoritmos y Estructuras de Datos - Sección 31
  * Hoja de Trabajo 4
  *
- * Clase que se encarga de evaluar expresiones en notación postfix.
+ * Clase Calculator
+ * Evalúa expresiones matemáticas en notación postfix.
  *
  * Integrantes:
  * - Diana Sosa (241040)
  * - Biancka Raxón (24960)
  * - Ivana Figueroa (24785)
  *
- * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
  * @version 1.1
- */
-
-/**
- * La clase Calculator evalúa expresiones matemáticas en notación postfix.
  */
 public class Calculator {
 
-    // Atributo que representa la pila para evaluar la expresión.
-    private IStack<Double> stack;
+    private IStack<Double> stack;  // Instancia de la pila
 
     /**
-     * Constructor de la clase Calculator.
-     * Inicializa la pila que se utilizará para evaluar la expresión postfix.
+     * Constructor que recibe la pila a utilizar.
      *
-     * @param stack La pila que se utilizará para realizar los cálculos.
+     * @param stack La pila que se usará para almacenar los operandos durante la evaluación.
      */
     public Calculator(IStack<Double> stack) {
-        this.stack = stack;  // Inicializa el stack con la instancia proporcionada
+        this.stack = stack;
     }
 
     /**
@@ -38,9 +32,9 @@ public class Calculator {
      * @param postfix La expresión matemática en notación postfix.
      * @return El resultado de la evaluación como un número decimal (double).
      * @throws IllegalArgumentException Si la expresión es inválida.
-     * @throws ArithmeticException Si ocurre una división por cero.
      */
     public double evaluate(String postfix) {
+        // Iterar sobre cada carácter de la expresión postfix
         for (int i = 0; i < postfix.length(); i++) {
             char currentChar = postfix.charAt(i);
 
@@ -49,12 +43,19 @@ public class Calculator {
                 continue;
             }
 
-            // Si es un número, lo convertimos a double y lo apilamos
+            // Si el carácter es un número (puede ser un dígito o parte de un número mayor)
             if (Character.isDigit(currentChar)) {
-                stack.push((double) (currentChar - '0'));
-
+                StringBuilder numStr = new StringBuilder();
+                // Leer el número completo (puede ser más de un dígito)
+                while (i < postfix.length() && (Character.isDigit(postfix.charAt(i)) || postfix.charAt(i) == '.')) {
+                    numStr.append(postfix.charAt(i));
+                    i++;
+                }
+                // Convertir el número a double y apilarlo
+                stack.push(Double.parseDouble(numStr.toString()));
+                i--; // Retroceder el índice para compensar el incremento extra del bucle
             } else {
-                // Deben haber al menos dos operandos en la pila
+                // Deben haber al menos dos operandos en la pila para realizar la operación
                 if (stack.size() < 2) {
                     throw new IllegalArgumentException("Expresión postfix inválida.");
                 }
@@ -62,6 +63,7 @@ public class Calculator {
                 double b = stack.pop();
                 double a = stack.pop();
 
+                // Realizar la operación correspondiente
                 switch (currentChar) {
                     case '+':
                         stack.push(a + b);
