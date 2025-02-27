@@ -3,24 +3,23 @@
  * Algoritmos y Estructuras de Datos - Sección 31
  * Hoja de Trabajo 4
  *
- * Clase Calculator
- * Evalúa expresiones matemáticas en notación postfix.
+ * Clase que se encarga de evaluar expresiones en notación postfix.
  *
  * Integrantes:
  * - Diana Sosa (241040)
  * - Biancka Raxón (24960)
  * - Ivana Figueroa (24785)
  *
+ * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
  * @version 1.1
  */
 public class Calculator {
 
-    private IStack<Double> stack;  // Instancia de la pila
+    private IStack<Double> stack;
 
     /**
-     * Constructor que recibe la pila a utilizar.
-     *
-     * @param stack La pila que se usará para almacenar los operandos durante la evaluación.
+     * Constructor de la clase Calculator.
+     * @param stack La pila que se usará para la evaluación de la expresión postfix.
      */
     public Calculator(IStack<Double> stack) {
         this.stack = stack;
@@ -34,7 +33,6 @@ public class Calculator {
      * @throws IllegalArgumentException Si la expresión es inválida.
      */
     public double evaluate(String postfix) {
-        // Iterar sobre cada carácter de la expresión postfix
         for (int i = 0; i < postfix.length(); i++) {
             char currentChar = postfix.charAt(i);
 
@@ -43,19 +41,11 @@ public class Calculator {
                 continue;
             }
 
-            // Si el carácter es un número (puede ser un dígito o parte de un número mayor)
+            // Si es un número, lo convertimos a double y lo apilamos
             if (Character.isDigit(currentChar)) {
-                StringBuilder numStr = new StringBuilder();
-                // Leer el número completo (puede ser más de un dígito)
-                while (i < postfix.length() && (Character.isDigit(postfix.charAt(i)) || postfix.charAt(i) == '.')) {
-                    numStr.append(postfix.charAt(i));
-                    i++;
-                }
-                // Convertir el número a double y apilarlo
-                stack.push(Double.parseDouble(numStr.toString()));
-                i--; // Retroceder el índice para compensar el incremento extra del bucle
+                stack.push((double) (currentChar - '0'));
             } else {
-                // Deben haber al menos dos operandos en la pila para realizar la operación
+                // Deben haber al menos dos operandos en la pila
                 if (stack.size() < 2) {
                     throw new IllegalArgumentException("Expresión postfix inválida.");
                 }
@@ -63,7 +53,6 @@ public class Calculator {
                 double b = stack.pop();
                 double a = stack.pop();
 
-                // Realizar la operación correspondiente
                 switch (currentChar) {
                     case '+':
                         stack.push(a + b);

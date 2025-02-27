@@ -3,7 +3,7 @@
  * Algoritmos y Estructuras de Datos - Sección 31
  * Hoja de Trabajo 4
  *
- * Clase que se encarga de convertir expresiones en notación infix a postfix
+ * Clase que se encarga de convertir expresiones en notación infix a postfix.
  *
  * Integrantes:
  * - Diana Sosa (241040)
@@ -13,24 +13,16 @@
  * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
  * @version 1.1
  */
-
-/**
- * La clase Translator proporciona un método para convertir expresiones matemáticas
- * de notación infix a notación postfix (notación polaca inversa).
- */
 public class Translator {
 
-    // Atributo que representa la pila de operadores y paréntesis.
-    private IStack<Character> stk;
+    private IStack<Character> stack;
 
     /**
      * Constructor de la clase Translator.
-     * Inicializa la pila de operadores y paréntesis con la implementación proporcionada.
-     *
-     * @param stack La pila que se utilizará para manejar los operadores y paréntesis.
+     * @param stack La pila que se usará para la conversión de infix a postfix.
      */
     public Translator(IStack<Character> stack) {
-        this.stk = stack;  // Inicializa el stack con la instancia proporcionada
+        this.stack = stack;
     }
 
     /**
@@ -45,13 +37,13 @@ public class Translator {
      */
     private int preced(char ch) {
         if (ch == '+' || ch == '-') {
-            return 1;  
+            return 1;
         } else if (ch == '*' || ch == '/') {
-            return 2;  
+            return 2;
         } else if (ch == '^') {
-            return 3;  
+            return 3;
         } else {
-            return 0;  
+            return 0;
         }
     }
 
@@ -71,7 +63,7 @@ public class Translator {
      * @throws IllegalArgumentException Si los paréntesis están desbalanceados.
      */
     public String infixToPostfix(String infix) {
-        stk.push('#');  // Símbolo de referencia para indicar el fondo de la pila
+        stack.push('#');  // Símbolo de referencia para indicar el fondo de la pila
         StringBuilder postfix = new StringBuilder();  // Almacena el resultado en notación postfix
 
         for (int i = 0; i < infix.length(); i++) {
@@ -88,15 +80,15 @@ public class Translator {
 
             // Si es un paréntesis de apertura, lo apilamos
             } else if (currentChar == '(') {
-                stk.push('(');
+                stack.push('(');
 
             // Si es un paréntesis de cierre, vaciamos la pila hasta encontrar '('
             } else if (currentChar == ')') {
-                while (stk.peek() != '#' && stk.peek() != '(') {
-                    postfix.append(stk.pop());
+                while (stack.peek() != '#' && stack.peek() != '(') {
+                    postfix.append(stack.pop());
                 }
-                if (stk.peek() == '(') {
-                    stk.pop();  // Desapilamos el paréntesis de apertura
+                if (stack.peek() == '(') {
+                    stack.pop();  // Desapilamos el paréntesis de apertura
                 } else {
                     throw new IllegalArgumentException("Error: Paréntesis desbalanceados.");
                 }
@@ -105,23 +97,23 @@ public class Translator {
             } else {
                 // Manejar el operador de potencia con asociatividad derecha
                 if (currentChar == '^') {
-                    stk.push(currentChar); 
+                    stack.push(currentChar); 
                 } else {
                     // Desapilar mientras haya operadores de mayor o igual precedencia
-                    while (stk.peek() != '#' && preced(currentChar) <= preced(stk.peek())) {
-                        postfix.append(stk.pop());
+                    while (stack.peek() != '#' && preced(currentChar) <= preced(stack.peek())) {
+                        postfix.append(stack.pop());
                     }
-                    stk.push(currentChar);
+                    stack.push(currentChar);
                 }
             }
         }
 
         // Desapilar los operadores restantes
-        while (stk.peek() != '#') {
-            if (stk.peek() == '(') {
+        while (stack.peek() != '#') {
+            if (stack.peek() == '(') {
                 throw new IllegalArgumentException("Error: Paréntesis desbalanceados.");
             }
-            postfix.append(stk.pop());
+            postfix.append(stack.pop());
         }
 
         return postfix.toString();
