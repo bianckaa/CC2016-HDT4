@@ -5,11 +5,11 @@
  * 
  */
 
-public class NodoSimple<T> {
+public class NodeSimple<T> {
     T data;
-    NodoSimple<T> nextNode;
+    NodeSimple<T> nextNode;
 
-    public NodoSimple(T data) {
+    public NodeSimple(T data) {
         this.data = data;
         this.nextNode = null;
     }

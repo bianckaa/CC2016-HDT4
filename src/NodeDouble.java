@@ -11,12 +11,12 @@
  *  @param <T> el tipo de elementos que contendra el nodo.
  */
 
-public class NodoDouble<T> {
+public class NodeDouble<T> {
     T data;
-    NodoDouble<T> nextNode;
-    NodoDouble<T> previousNode;
+    NodeDouble<T> nextNode;
+    NodeDouble<T> previousNode;
     
-    public NodoDouble(T data) {
+    public NodeDouble(T data) {
         this.data = data;
         this.nextNode = null;
         this.previousNode = null;

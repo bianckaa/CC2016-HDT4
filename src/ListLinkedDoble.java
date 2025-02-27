@@ -1,6 +1,6 @@
 public class ListLinkedDoble<T> extends ListAbstract<T> {
-    private NodoDouble<T> firstNode;
-    private NodoDouble<T> lastNode;
+    private NodeDouble<T> firstNode;
+    private NodeDouble<T> lastNode;
     private int size;
 
     public ListLinkedDoble() {
@@ -15,7 +15,7 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
             throw new IndexOutOfBoundsException("Índice fuera de rango");
         }
 
-        NodoDouble<T> newNode = new NodoDouble<>(item);
+        NodeDouble<T> newNode = new NodeDouble<>(item);
 
         if (index == 0) { 
             if (firstNode == null) { 
@@ -30,7 +30,7 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
             newNode.previousNode = lastNode;
             lastNode = newNode;
         } else {  
-            NodoDouble<T> currentNode = firstNode;
+            NodeDouble<T> currentNode = firstNode;
             for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.nextNode;
             }
@@ -66,7 +66,7 @@ public class ListLinkedDoble<T> extends ListAbstract<T> {
                 firstNode = null;
             }
         } else { 
-            NodoDouble<T> currentNode = firstNode;
+            NodeDouble<T> currentNode = firstNode;
             for (int i = 0; i < index; i++) {
                 currentNode = currentNode.nextNode;
             }

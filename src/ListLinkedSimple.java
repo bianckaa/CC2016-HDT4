@@ -1,5 +1,5 @@
 public class ListLinkedSimple<T> extends ListAbstract<T> {
-    private NodoSimple<T> firstNode;
+    private NodeSimple<T> firstNode;
     private int size;
 
     public ListLinkedSimple() {
@@ -13,13 +13,13 @@ public class ListLinkedSimple<T> extends ListAbstract<T> {
             throw new IndexOutOfBoundsException("Índice fuera de rango");
         }
 
-        NodoSimple<T> newNode = new NodoSimple<>(item);
+        NodeSimple<T> newNode = new NodeSimple<>(item);
 
         if (index == 0) { 
             newNode.nextNode = firstNode;
             firstNode = newNode;
         } else { 
-            NodoSimple<T> currentNode = firstNode;
+            NodeSimple<T> currentNode = firstNode;
             for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.nextNode;
             }
@@ -40,7 +40,7 @@ public class ListLinkedSimple<T> extends ListAbstract<T> {
             removedData = firstNode.data;
             firstNode = firstNode.nextNode;
         } else { 
-            NodoSimple<T> currentNode = firstNode;
+            NodeSimple<T> currentNode = firstNode;
             for (int i = 0; i < index - 1; i++) {
                 currentNode = currentNode.nextNode;
             }
