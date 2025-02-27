@@ -1,106 +1,75 @@
-
-/**
- * Universidad del Valle de Guatemala
- * Algoritmos y Estructuras de Datos - Sección 31
- * Hoja de Trabajo 4
- *
- * Clase Translator
- * Se encarga de convertir una expresión infix a postfix utilizando una pila.
- *
- * Integrantes:
- * - Diana Sosa (241040)
- * - Biancka Raxón (24960)
- * - Ivana Figueroa (24785)
- *
- * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
- * @version 1.1
- */
+import java.util.Stack;
 
 public class Translator {
 
     private IStack<Double> stack;
 
-    /**
-     * Constructor de la clase Translator.
-     * @param stack La pila que se usará para la conversión.
-     */
     public Translator(IStack<Double> stack) {
         this.stack = stack;
     }
 
-    /**
-     * Convierte una expresión matemática en notación infix a postfix.
-     *
-     * @param infix La expresión infix a convertir.
-     * @return La expresión convertida a postfix.
-     */
     public String infixToPostfix(String infix) {
         StringBuilder postfix = new StringBuilder();
-        IStack<Character> operators = new StackArrayList<>();  // Pila para operadores
+        Stack<Character> operators = new Stack<>();
+        StringBuilder number = new StringBuilder();
 
+        // Recorrer cada caracter de la expresión infix
         for (int i = 0; i < infix.length(); i++) {
-            char currentChar = infix.charAt(i);
+            char ch = infix.charAt(i);
 
-            // Si el carácter es un número, lo agregamos a la salida
-            if (Character.isDigit(currentChar)) {
-                postfix.append(currentChar);
-            
-            // Si es un operador, gestionamos la pila de operadores
-            } else if (isOperator(currentChar)) {
-                while (!operators.isEmpty() && precedence(operators.peek()) >= precedence(currentChar)) {
-                    postfix.append(operators.pop());
+            // Si el caracter es un número
+            if (Character.isDigit(ch)) {
+                number.append(ch); // Acumula el número completo (en caso de varios dígitos)
+            } else {
+                if (number.length() > 0) {
+                    // Si hay un número acumulado, añádelo a postfix y resetea el StringBuilder
+                    postfix.append(number).append(" ");
+                    number.setLength(0); // Reinicia el número acumulado
                 }
-                operators.push(currentChar);
-            
-            // Si es un paréntesis izquierdo, lo apilamos
-            } else if (currentChar == '(') {
-                operators.push(currentChar);
-            
-            // Si es un paréntesis derecho, procesamos la pila hasta encontrar el paréntesis izquierdo
-            } else if (currentChar == ')') {
-                while (!operators.isEmpty() && operators.peek() != '(') {
-                    postfix.append(operators.pop());
+
+                // Si el caracter es un operador, manejar la pila de operadores
+                if (ch == '(') {
+                    operators.push(ch);
+                } else if (ch == ')') {
+                    while (!operators.isEmpty() && operators.peek() != '(') {
+                        postfix.append(operators.pop()).append(" ");
+                    }
+                    operators.pop(); // Elimina '(' de la pila
+                } else if (isOperator(ch)) {
+                    while (!operators.isEmpty() && precedence(operators.peek()) >= precedence(ch)) {
+                        postfix.append(operators.pop()).append(" ");
+                    }
+                    operators.push(ch);
                 }
-                operators.pop();  // Eliminar '(' de la pila
             }
         }
 
-        // Vaciar los operadores restantes
+        // Añadir el último número si lo hay
+        if (number.length() > 0) {
+            postfix.append(number).append(" ");
+        }
+
+        // Añadir los operadores restantes
         while (!operators.isEmpty()) {
-            postfix.append(operators.pop());
+            postfix.append(operators.pop()).append(" ");
         }
 
-        return postfix.toString();
+        return postfix.toString().trim(); // Elimina el espacio extra final
     }
 
-    /**
-     * Verifica si un carácter es un operador válido.
-     *
-     * @param ch El carácter a verificar.
-     * @return true si es un operador, false de lo contrario.
-     */
+    // Método para verificar si un caracter es un operador
     private boolean isOperator(char ch) {
-        return ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^';
+        return ch == '+' || ch == '-' || ch == '*' || ch == '/';
     }
 
-    /**
-     * Determina la precedencia de un operador.
-     *
-     * @param operator El operador cuya precedencia se quiere conocer.
-     * @return La precedencia del operador.
-     */
+    // Método para obtener la precedencia de los operadores
     private int precedence(char operator) {
-        switch (operator) {
-            case '+':
-            case '-':
-                return 1;
-            case '*':
-            case '/':
-                return 2;
-            case '^':
-                return 3;
-            default:
-                return -1;
+        if (operator == '+' || operator == '-') {
+            return 1;
         }
+        if (operator == '*' || operator == '/') {
+            return 2;
+        }
+        return -1;
     }
 }
