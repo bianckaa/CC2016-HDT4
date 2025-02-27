@@ -35,6 +35,7 @@
          int option = scanner.nextInt();
          IStack<Character> stack = null;
  
+         // Selección de la implementación de pila
          switch (option) {
              case 1:
                  stack = new StackArrayList<>();
@@ -50,6 +51,7 @@
                  break;
              default:
                  System.out.println("Opción no válida. Saliendo...");
+                 scanner.close();
                  System.exit(0);
          }
  
@@ -60,6 +62,13 @@
  
          // Leer el archivo "datos.txt"
          List<String> expressions = reader.readFile("datos.txt");
+ 
+         // Verifica si el archivo tiene expresiones
+         if (expressions.isEmpty()) {
+             System.out.println("El archivo está vacío o no contiene expresiones válidas.");
+             scanner.close();
+             return;
+         }
  
          // Procesar cada expresión
          for (String infixExpression : expressions) {
@@ -80,6 +89,7 @@
              System.out.println("-------------------------------");
          }
  
+         // Cerrar el scanner
          scanner.close();
      }
  }

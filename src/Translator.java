@@ -20,6 +20,19 @@
  */
 public class Translator {
 
+    // Atributo que representa la pila de operadores y paréntesis.
+    private IStack<Character> stk;
+
+    /**
+     * Constructor de la clase Translator.
+     * Inicializa la pila de operadores y paréntesis con la implementación proporcionada.
+     *
+     * @param stack La pila que se utilizará para manejar los operadores y paréntesis.
+     */
+    public Translator(IStack<Character> stack) {
+        this.stk = stack;  // Inicializa el stack con la instancia proporcionada
+    }
+
     /**
      * Determina la precedencia de los operadores matemáticos.
      *
@@ -58,7 +71,6 @@ public class Translator {
      * @throws IllegalArgumentException Si los paréntesis están desbalanceados.
      */
     public String infixToPostfix(String infix) {
-        IStack<Character> stk = new StackVector<>();
         stk.push('#');  // Símbolo de referencia para indicar el fondo de la pila
         StringBuilder postfix = new StringBuilder();  // Almacena el resultado en notación postfix
 

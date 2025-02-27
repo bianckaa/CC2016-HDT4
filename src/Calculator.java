@@ -19,16 +19,28 @@
  */
 public class Calculator {
 
+    // Atributo que representa la pila para evaluar la expresión.
+    private IStack<Double> stack;
+
+    /**
+     * Constructor de la clase Calculator.
+     * Inicializa la pila que se utilizará para evaluar la expresión postfix.
+     *
+     * @param stack La pila que se utilizará para realizar los cálculos.
+     */
+    public Calculator(IStack<Double> stack) {
+        this.stack = stack;  // Inicializa el stack con la instancia proporcionada
+    }
+
     /**
      * Evalúa una expresión en notación postfix y retorna el resultado.
      *
      * @param postfix La expresión matemática en notación postfix.
      * @return El resultado de la evaluación como un número decimal (double).
      * @throws IllegalArgumentException Si la expresión es inválida.
+     * @throws ArithmeticException Si ocurre una división por cero.
      */
     public double evaluate(String postfix) {
-        IStack<Double> stack = new StackVector<>();
-
         for (int i = 0; i < postfix.length(); i++) {
             char currentChar = postfix.charAt(i);
 
