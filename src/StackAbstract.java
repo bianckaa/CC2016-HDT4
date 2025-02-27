@@ -12,7 +12,6 @@
  * 
  * @param <T> el tipo de elementos que contendra la pila.
  */
- 
 
 public abstract class StackAbstract<T> implements IStack<T> {
 
@@ -20,6 +19,4 @@ public abstract class StackAbstract<T> implements IStack<T> {
     public boolean isEmpty(){
         return size() == 0;
     }
-
-  
 }
