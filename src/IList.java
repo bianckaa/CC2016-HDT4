@@ -5,16 +5,15 @@
  * 
  */
 
-import java.util.ListIterator;
 
 public interface IList<T> {
-    T get(int index);
-    T set(int index, T item);
-    void add(int index, T item);
+    /** T get(int index);
+    T set(int index, T item); */
+    void add(int index, T item); 
     T remove(int index);
-    int indexOf(T item);
+    /** int indexOf(T item);
     int lastIndexOf(T item);
-    ListIterator<T> listIterator();
+    ListIterator<T> listIterator(); */
     int size();
     boolean isEmpty();
 }

@@ -12,7 +12,13 @@
  */
 
 public class NodoDouble<T> {
-    NodoDouble<T> next = null; // refiere al nodo siguiente de la lista
-    NodoDouble<T> previous = null; // refiere al nodo anterior de la lista
-    T data = null; //dato del nodo
+    T data;
+    NodoDouble<T> nextNode;
+    NodoDouble<T> previousNode;
+    
+    public NodoDouble(T data) {
+        this.data = data;
+        this.nextNode = null;
+        this.previousNode = null;
+    }
 }
