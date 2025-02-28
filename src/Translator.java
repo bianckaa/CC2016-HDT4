@@ -1,3 +1,21 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Sección 31
+ * Hoja de Trabajo 4
+ *
+ * Clase Translator
+ * Esta clase se encarga de convertir una expresión matemática en notación infix a postfix.
+ * Utiliza una pila para manejar operadores y paréntesis, y garantiza que los números de
+ * varios dígitos sean manejados correctamente, separados por espacios.
+ *
+ * Integrantes:
+ * - Diana Sosa (241040)
+ * - Biancka Raxón (24960)
+ * - Ivana Figueroa (24785)
+ *
+ * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
+ * @version 1.1
+ */
 import java.util.Stack;
 
 public class Translator {
