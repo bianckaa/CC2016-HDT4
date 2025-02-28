@@ -31,10 +31,12 @@ public class StackListLinkedDouble<T> extends StackListAbstract<T> {
     @Override
     public void push(T element) {
         NodeDouble<T> newNode = new NodeDouble<>(element);
-        if (stackTop == null) {
-            newNode.previousNode = stackTop;
+    
+        if (stackTop != null) { 
             stackTop.nextNode = newNode;
+            newNode.previousNode = stackTop;
         }
+        
         stackTop = newNode;
         size++;
     }
