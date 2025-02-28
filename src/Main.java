@@ -33,7 +33,9 @@
 
         // Selecciona la estructura de datos (Pila o Lista).
         String estructura = UI.seleccionarEstructura();
+        @SuppressWarnings("unused")
         StackAbstract<Character> pila = null;
+        @SuppressWarnings("unused")
         ListAbstract<String> lista = null;
         String tipoImplementacion = "";
 
