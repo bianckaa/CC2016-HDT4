@@ -25,7 +25,7 @@ class CalculadoraTest {
 
     @Test
     void testEvaluarPostfix_OperacionCompuesta() {
-        assertEquals(14, Calculadora.evaluarPostfix("34+52*+"));
+        assertEquals(17, Calculadora.evaluarPostfix("34+52*+"));
     }
 
     @Test
