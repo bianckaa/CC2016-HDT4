@@ -3,9 +3,9 @@
  * Algoritmos y Estructuras de Datos - Sección 31
  * Hoja de Trabajo 4
  * Integrantes:
- * - Diana Sosa (241040)
- * - Biancka Raxón (24960)
- * - Ivana Figueroa (24785)
+ * - Diana Sosa 241040
+ * - Biancka Raxón 24960
+ * - Ivana Figueroa 24785
  * 
  * Clase abstracta ListAbstract:
  * Implementación parcial de la interfaz IList. 

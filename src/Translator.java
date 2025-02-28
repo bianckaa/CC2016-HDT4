@@ -9,9 +9,9 @@
  * varios dígitos sean manejados correctamente, separados por espacios.
  *
  * Integrantes:
- * - Diana Sosa (241040)
- * - Biancka Raxón (24960)
- * - Ivana Figueroa (24785)
+ * - Diana Sosa 241040
+ * - Biancka Raxón 24960
+ * - Ivana Figueroa 24785
  *
  * @author Diana Sosa, Biancka Raxón, Ivana Figueroa
  * @version 1.1
